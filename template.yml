@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: TU 2k21 Game Bot
+
+Transform:
+- AWS::Serverless-2016-10-31
+
+Resources:
+  gameBot:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: makefile
+    Properties:
+      CodeUri: app/
+      Handler: dist/src/handlers/game-bot.handler
+      Runtime: nodejs12.x
+      MemorySize: 128
+      Timeout: 100
+      Events:
+        HealthcheckApi:
+          Type: Api
+          Properties:
+            Path: /healthcheck
+            Method: GET
+        GameBotApi:
+          Type: Api
+          Properties:
+            Path: /bot
+            Method: POST
+
+Outputs:
+  HealthcheckEndpoint:
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/healthcheck"
+  BotEndpoint:
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/bot"

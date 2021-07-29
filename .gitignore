@@ -1,0 +1,4 @@
+.aws-sam/
+*.out
+dist/
+node_modules/
