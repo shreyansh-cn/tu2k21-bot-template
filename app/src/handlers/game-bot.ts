@@ -8,7 +8,7 @@ export const handler = async (
   event: ApiGatewayEvent
 ): Promise<ApiGatewayResponse> => {
   let app: LambdaApp = new HealthcheckApp();
-  if (event.httpMethod.toLowerCase() === "get") {
+  if (event.httpMethod.toLowerCase() === "post") {
     app = new GameBotApp();
   }
   return await app.run(event);
