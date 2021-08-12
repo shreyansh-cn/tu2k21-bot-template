@@ -14,7 +14,8 @@ Resources:
       Handler: dist/src/handlers/game-bot.handler
       Runtime: nodejs12.x
       MemorySize: 128
-      Timeout: 100
+      Timeout: 2
+      Role: "arn:aws:iam::269164092502:role/TU2k21-Bot-Execution-Role"
       Events:
         HealthcheckApi:
           Type: Api
