@@ -11,7 +11,7 @@ export interface BotRequest {
 }
 
 export interface BotResponse {
-  type: string;
+  type: 'PB' | 'MB';
   index: number;
   current: Pair;
   to: Pair;
