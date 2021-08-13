@@ -1,7 +1,20 @@
+interface Pair {
+  x: number;
+  y: number;
+}
+
 export interface BotRequest {
-  board: string;
+  board: Array<Array<number>>;
+  your_pieces: Array<Pair>;
+  opponent_pieces:Array <Pair>;
+  data: any;
 }
 
 export interface BotResponse {
-  move: string;
+  type: string;
+  index: number;
+  current: Pair;
+  to: Pair;
+  build: Pair;
+  data: any;
 }
